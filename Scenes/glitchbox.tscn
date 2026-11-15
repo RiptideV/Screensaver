@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://7dulg5krg1or"]
+
+[ext_resource type="Texture2D" uid="uid://bvul3g8uq7yv4" path="res://Assets/Sprites/Glitchbox.png" id="1_agrtk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i4j32"]
+size = Vector2(512, 328)
+
+[node name="Glitchbox" type="Node2D" unique_id=113138164]
+scale = Vector2(0.31236538, 0.31236538)
+
+[node name="RigidBody2D" type="RigidBody2D" parent="." unique_id=522684415]
+lock_rotation = true
+freeze = true
+
+[node name="Sprite2D" type="Sprite2D" parent="RigidBody2D" unique_id=750728862]
+scale = Vector2(0.50952137, 0.50952137)
+texture = ExtResource("1_agrtk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D" unique_id=789340898]
+position = Vector2(0, -4)
+shape = SubResource("RectangleShape2D_i4j32")

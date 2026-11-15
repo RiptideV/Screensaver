@@ -1,0 +1,356 @@
+[gd_scene format=3 uid="uid://dk26xkqru1m2y"]
+
+[ext_resource type="Script" uid="uid://cfldatacw40rs" path="res://Scenes/main.gd" id="1_3dryh"]
+[ext_resource type="PackedScene" uid="uid://dbgfxak36un6k" path="res://Scenes/ball.tscn" id="1_ebmjs"]
+[ext_resource type="Script" uid="uid://dwcmdfwr4m1jk" path="res://Scenes/cornercollide.gd" id="1_qxrlw"]
+[ext_resource type="Texture2D" uid="uid://b4w60paokg0wf" path="res://Assets/Sprites/Boundrybox.png" id="2_wowpa"]
+[ext_resource type="AudioStream" uid="uid://dst8er3xxlunl" path="res://Assets/Music/Retro perfecthit.wav" id="3_nb51f"]
+[ext_resource type="Script" uid="uid://dx2tl6xxa2aph" path="res://Scenes/cornercollidebigcorners.gd" id="3_rfjv2"]
+[ext_resource type="Script" uid="uid://blhgi68ec2m8d" path="res://Scenes/camera.gd" id="3_wrm1d"]
+[ext_resource type="AudioStream" uid="uid://d4nexs03mg4h3" path="res://Assets/Music/Retro normalcorner.wav" id="4_1phco"]
+[ext_resource type="FontFile" uid="uid://ce15mt7w4wmwx" path="res://Assets/Fonts/PxPlus_IBM_VGA_8x14.ttf" id="5_v158k"]
+[ext_resource type="Script" uid="uid://c6i701cc6d8lc" path="res://Scenes/Score.gd" id="6_h4fw4"]
+[ext_resource type="Shader" uid="uid://b3an25lkoahyo" path="res://Scenes/VHSCRT.gdshader" id="6_i6g32"]
+[ext_resource type="AudioStream" uid="uid://cgkedegefynfm" path="res://Assets/Music/Retro PowerUP 23.wav" id="7_rku1e"]
+[ext_resource type="Script" uid="uid://bcov0ilmx8hyf" path="res://Scenes/pickup_spawn.gd" id="9_h4fw4"]
+[ext_resource type="Shader" uid="uid://cbi61uh0a8s7f" path="res://Scenes/glitch.gdshader" id="10_o5yvi"]
+[ext_resource type="Script" uid="uid://cxd76yjlcswtu" path="res://Scenes/timer.gd" id="11_ewbju"]
+[ext_resource type="Texture2D" uid="uid://c0b033oqv4bek" path="res://Assets/Sprites/warning_symbol-removebg-preview.png" id="11_rku1e"]
+[ext_resource type="AudioStream" uid="uid://cj7c6fj30by8v" path="res://Assets/Music/van_wiese-techno-beat-loop-292908.mp3" id="16_nnt18"]
+[ext_resource type="Script" uid="uid://df3es5p21eoke" path="res://Scenes/glitchboxspawner.gd" id="18_85qyi"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i4j32"]
+size = Vector2(7, 7)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_luy4t"]
+b = Vector2(-1151.7731, -0.10626221)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_wl442"]
+b = Vector2(0.1171875, -647.97656)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_i4j32"]
+b = Vector2(1152, 0)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_ebmjs"]
+b = Vector2(0, 648)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o5yvi"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wl442"]
+shader = ExtResource("6_i6g32")
+shader_parameter/brightness = 0.6650000315875
+shader_parameter/contrast = 1.08
+shader_parameter/saturation = 1.1
+shader_parameter/gamma = 1.05
+shader_parameter/curvature = 0.0190000009025
+shader_parameter/corner_soften = 0.06
+shader_parameter/vignette = 0.38
+shader_parameter/scanline_strength = 0.410000019475
+shader_parameter/scanline_density = 0.87600001786
+shader_parameter/interlace_strength = 0.2
+shader_parameter/mask_strength = 0.22
+shader_parameter/mask_scale = 1.0
+shader_parameter/chroma_offset_px = 1.6
+shader_parameter/luma_smear_px = 2.2
+shader_parameter/jitter_px = 0.9230000438425
+shader_parameter/wobble_px = 1.5
+shader_parameter/tape_noise = 0.22
+shader_parameter/tape_lines = 0.35
+shader_parameter/roll_speed = 0.1
+shader_parameter/roll_strength = 0.15
+shader_parameter/glow_strength = 0.25
+shader_parameter/glow_threshold = 0.65
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rfjv2"]
+shader = ExtResource("10_o5yvi")
+shader_parameter/shake_power = 0.03
+shader_parameter/shake_rate = 0.2
+shader_parameter/shake_speed = 5.0
+shader_parameter/shake_block_size = 30.5
+shader_parameter/shake_color_rate = 0.01
+
+[node name="Game" type="Node2D" unique_id=2056118049]
+script = ExtResource("1_3dryh")
+
+[node name="Collisons" type="Node2D" parent="." unique_id=1724156867]
+
+[node name="World Barrier" type="StaticBody2D" parent="Collisons" unique_id=1006111474]
+position = Vector2(32, 16)
+scale = Vector2(0.94165087, 0.94165087)
+
+[node name="Perfect Corners" type="Node2D" parent="Collisons/World Barrier" unique_id=1320931689]
+position = Vector2(16.991436, 16.991436)
+scale = Vector2(0.96827245, 0.96827245)
+
+[node name="PCorner" type="Area2D" parent="Collisons/World Barrier/Perfect Corners" unique_id=1864435995]
+position = Vector2(-15.354672, -1.0967623)
+scale = Vector2(3.3639827, 3.3639827)
+script = ExtResource("1_qxrlw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collisons/World Barrier/Perfect Corners/PCorner" unique_id=1052057917]
+position = Vector2(-4.7683716e-07, -1.7881393e-07)
+scale = Vector2(0.6950282, 0.69264513)
+shape = SubResource("RectangleShape2D_i4j32")
+
+[node name="Perfecthit" type="AudioStreamPlayer" parent="Collisons/World Barrier/Perfect Corners/PCorner" unique_id=973462900]
+
+[node name="PCorner2" type="Area2D" parent="Collisons/World Barrier/Perfect Corners" unique_id=743455750]
+position = Vector2(-12.064387, 625.15454)
+scale = Vector2(3.2154453, 3.2154453)
+script = ExtResource("1_qxrlw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collisons/World Barrier/Perfect Corners/PCorner2" unique_id=2039778787]
+position = Vector2(-5.9604645e-07, 7.162928)
+scale = Vector2(0.46126455, 0.46126455)
+shape = SubResource("RectangleShape2D_i4j32")
+
+[node name="Perfecthit" type="AudioStreamPlayer" parent="Collisons/World Barrier/Perfect Corners/PCorner2" unique_id=560073402]
+
+[node name="PCorner4" type="Area2D" parent="Collisons/World Barrier/Perfect Corners" unique_id=2065444118]
+position = Vector2(1143.9231, 619.6707)
+scale = Vector2(3.6450562, 3.6450562)
+script = ExtResource("1_qxrlw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collisons/World Barrier/Perfect Corners/PCorner4" unique_id=1973504370]
+position = Vector2(7.5222416, 8.424931)
+scale = Vector2(0.5012551, 0.52423394)
+shape = SubResource("RectangleShape2D_i4j32")
+
+[node name="Perfecthit" type="AudioStreamPlayer" parent="Collisons/World Barrier/Perfect Corners/PCorner4" unique_id=1188333049]
+stream = ExtResource("3_nb51f")
+
+[node name="PCorner3" type="Area2D" parent="Collisons/World Barrier/Perfect Corners" unique_id=1848235791]
+position = Vector2(1144, 0)
+scale = Vector2(3.9308434, 3.9308434)
+script = ExtResource("1_qxrlw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collisons/World Barrier/Perfect Corners/PCorner3" unique_id=606942358]
+position = Vector2(6.955802, -1.1920929e-07)
+scale = Vector2(0.551487, 0.5788139)
+shape = SubResource("RectangleShape2D_i4j32")
+
+[node name="Perfecthit" type="AudioStreamPlayer" parent="Collisons/World Barrier/Perfect Corners/PCorner3" unique_id=1476532818]
+
+[node name="Corners" type="Node2D" parent="Collisons/World Barrier" unique_id=698258073]
+position = Vector2(16.991436, 16.991436)
+scale = Vector2(0.96827245, 0.96827245)
+
+[node name="Corner" type="Area2D" parent="Collisons/World Barrier/Corners" unique_id=1018313273]
+position = Vector2(-15.354672, -1.0967623)
+scale = Vector2(3.3639827, 3.3639827)
+script = ExtResource("3_rfjv2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collisons/World Barrier/Corners/Corner" unique_id=819213715]
+position = Vector2(-4.7683716e-07, -1.7881393e-07)
+scale = Vector2(2.7800875, 2.3035789)
+shape = SubResource("RectangleShape2D_i4j32")
+
+[node name="reghit" type="AudioStreamPlayer" parent="Collisons/World Barrier/Corners/Corner" unique_id=791582871]
+stream = ExtResource("4_1phco")
+
+[node name="Corner2" type="Area2D" parent="Collisons/World Barrier/Corners" unique_id=1263551532]
+position = Vector2(-12.064387, 625.15454)
+scale = Vector2(3.2154453, 3.2154453)
+script = ExtResource("3_rfjv2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collisons/World Barrier/Corners/Corner2" unique_id=1447239838]
+position = Vector2(-5.9604645e-07, 7.162928)
+scale = Vector2(2.625201, 2.645513)
+shape = SubResource("RectangleShape2D_i4j32")
+
+[node name="reghit" type="AudioStreamPlayer" parent="Collisons/World Barrier/Corners/Corner2" unique_id=1278848550]
+stream = ExtResource("4_1phco")
+
+[node name="Corner4" type="Area2D" parent="Collisons/World Barrier/Corners" unique_id=1312467356]
+position = Vector2(1143.9231, 619.6707)
+scale = Vector2(3.6450562, 3.6450562)
+script = ExtResource("3_rfjv2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collisons/World Barrier/Corners/Corner4" unique_id=106662961]
+position = Vector2(7.5222416, 8.424931)
+scale = Vector2(2.4355972, 2.1590867)
+shape = SubResource("RectangleShape2D_i4j32")
+
+[node name="reghit" type="AudioStreamPlayer" parent="Collisons/World Barrier/Corners/Corner4" unique_id=1121666089]
+stream = ExtResource("4_1phco")
+
+[node name="Corner3" type="Area2D" parent="Collisons/World Barrier/Corners" unique_id=1708437432]
+position = Vector2(1144, 0)
+scale = Vector2(3.9308434, 3.9308434)
+script = ExtResource("3_rfjv2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collisons/World Barrier/Corners/Corner3" unique_id=1919505796]
+position = Vector2(6.955802, -1.1920929e-07)
+scale = Vector2(2.2228823, 2.5706196)
+shape = SubResource("RectangleShape2D_i4j32")
+
+[node name="reghit" type="AudioStreamPlayer" parent="Collisons/World Barrier/Corners/Corner3" unique_id=1627949408]
+stream = ExtResource("4_1phco")
+
+[node name="Sprite2D" type="Sprite2D" parent="Collisons/World Barrier" unique_id=217152701]
+position = Vector2(577.70886, 331.33298)
+scale = Vector2(0.62550426, 0.62550426)
+texture = ExtResource("2_wowpa")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Collisons/World Barrier" unique_id=131611668]
+position = Vector2(1151.7731, 16.991434)
+scale = Vector2(2.720995, 2.720995)
+shape = SubResource("SegmentShape2D_luy4t")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Collisons/World Barrier" unique_id=351942431]
+position = Vector2(1151.8828, 647.97656)
+scale = Vector2(2.720995, 2.720995)
+shape = SubResource("SegmentShape2D_wl442")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Collisons/World Barrier" unique_id=741353052]
+position = Vector2(-1, 648)
+scale = Vector2(2.720995, 2.720995)
+shape = SubResource("SegmentShape2D_i4j32")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collisons/World Barrier" unique_id=539503412]
+scale = Vector2(2.720995, 2.720995)
+shape = SubResource("SegmentShape2D_ebmjs")
+
+[node name="UI" type="Control" parent="." unique_id=1976044374]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+metadata/_edit_use_anchors_ = true
+
+[node name="Background" type="CanvasLayer" parent="UI" unique_id=701154253]
+layer = -1
+
+[node name="ColorRect" type="ColorRect" parent="UI/Background" unique_id=1768669323]
+offset_right = 1151.0
+offset_bottom = 645.0
+color = Color(0, 0, 0, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="Score" type="RichTextLabel" parent="UI" unique_id=1370695003]
+z_index = -2
+clip_contents = false
+layout_mode = 1
+offset_left = 48.000004
+offset_top = 48.000004
+offset_right = 88.0
+offset_bottom = 71.0
+scale = Vector2(3.5900524, 3.6543612)
+theme_override_fonts/normal_font = ExtResource("5_v158k")
+theme_override_fonts/bold_font = ExtResource("5_v158k")
+theme_override_fonts/mono_font = ExtResource("5_v158k")
+theme_override_font_sizes/normal_font_size = 16
+bbcode_enabled = true
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+text_direction = 1
+script = ExtResource("6_h4fw4")
+
+[node name="Streakup" type="AudioStreamPlayer" parent="UI/Score" unique_id=1012804058]
+stream = ExtResource("7_rku1e")
+volume_db = -12.942
+
+[node name="tutorialtext" type="Label" parent="UI" unique_id=192205238]
+z_index = 1
+layout_mode = 0
+offset_left = 48.0
+offset_top = 39.999996
+offset_right = 552.0
+offset_bottom = 139.0
+scale = Vector2(2.0619423, 2.7326567)
+theme_override_fonts/font = ExtResource("5_v158k")
+theme_override_styles/normal = SubResource("StyleBoxFlat_o5yvi")
+text = "README:
+Launch yourself by holding click and letting go
+Hitting the corners will give you points
+Hitting the corner perfectly will give you extra points
+Hitting the corners back to back will give you MULT
+You will bounce off glitches
+Do not touch the errors or else you will get corrupted
+"
+
+[node name="closetutorial" type="Button" parent="UI/tutorialtext" unique_id=1086829041]
+layout_mode = 0
+offset_top = 117.10216
+offset_right = 104.0
+offset_bottom = 139.10216
+theme_override_colors/font_color = Color(0.3882353, 1, 0.7294118, 1)
+theme_override_fonts/font = ExtResource("5_v158k")
+action_mode = 0
+text = "[UNDERSTOOD]"
+
+[node name="Timecounter" type="Label" parent="UI" unique_id=690645871]
+layout_mode = 1
+offset_left = 424.00006
+offset_top = 40.0
+offset_right = 464.00006
+offset_bottom = 63.0
+scale = Vector2(7.5617237, 3.329503)
+theme_override_fonts/font = ExtResource("5_v158k")
+script = ExtResource("11_ewbju")
+
+[node name="Timer" type="Timer" parent="UI/Timecounter" unique_id=959635307]
+
+[node name="Ball" parent="UI" unique_id=1505763957 instance=ExtResource("1_ebmjs")]
+position = Vector2(576, 320)
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=505415941]
+position = Vector2(577, 324)
+script = ExtResource("3_wrm1d")
+
+[node name="Shaders" type="CanvasLayer" parent="." unique_id=1746052604]
+
+[node name="ColorRect" type="ColorRect" parent="Shaders" unique_id=939322897]
+material = SubResource("ShaderMaterial_wl442")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Pickup_Obstacle_Spawn" type="Node2D" parent="." unique_id=841600248]
+script = ExtResource("9_h4fw4")
+
+[node name="Enemyspawn" type="Timer" parent="Pickup_Obstacle_Spawn" unique_id=1190927641]
+wait_time = 2.0
+autostart = true
+
+[node name="Difficulty Timer" type="Timer" parent="Pickup_Obstacle_Spawn" unique_id=705547592]
+wait_time = 15.0
+autostart = true
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1602654703]
+material = SubResource("ShaderMaterial_rfjv2")
+position = Vector2(0, -2)
+scale = Vector2(0.039241035, 0.039241035)
+texture = ExtResource("11_rku1e")
+
+[node name="Backgroundmusic" type="AudioStreamPlayer" parent="." unique_id=1624054245]
+stream = ExtResource("16_nnt18")
+autoplay = true
+
+[node name="Glitchboxspawner" type="Node2D" parent="." unique_id=1068519399]
+script = ExtResource("18_85qyi")
+
+[node name="glitchspawn" type="Timer" parent="Glitchboxspawner" unique_id=1429690512]
+wait_time = 5.0
+autostart = true
+
+[connection signal="body_entered" from="Collisons/World Barrier/Perfect Corners/PCorner" to="Collisons/World Barrier/Perfect Corners/PCorner" method="_on_body_entered"]
+[connection signal="body_entered" from="Collisons/World Barrier/Perfect Corners/PCorner2" to="Collisons/World Barrier/Perfect Corners/PCorner2" method="_on_body_entered"]
+[connection signal="body_entered" from="Collisons/World Barrier/Perfect Corners/PCorner4" to="Collisons/World Barrier/Perfect Corners/PCorner4" method="_on_body_entered"]
+[connection signal="body_entered" from="Collisons/World Barrier/Perfect Corners/PCorner3" to="Collisons/World Barrier/Perfect Corners/PCorner3" method="_on_body_entered"]
+[connection signal="body_entered" from="Collisons/World Barrier/Corners/Corner" to="Collisons/World Barrier/Corners/Corner" method="_on_body_entered"]
+[connection signal="body_entered" from="Collisons/World Barrier/Corners/Corner2" to="Collisons/World Barrier/Corners/Corner2" method="_on_body_entered"]
+[connection signal="body_entered" from="Collisons/World Barrier/Corners/Corner4" to="Collisons/World Barrier/Corners/Corner4" method="_on_body_entered"]
+[connection signal="body_entered" from="Collisons/World Barrier/Corners/Corner3" to="Collisons/World Barrier/Corners/Corner3" method="_on_body_entered"]
+[connection signal="pressed" from="UI/tutorialtext/closetutorial" to="." method="_on_closetutorial_pressed"]
+[connection signal="timeout" from="UI/Timecounter/Timer" to="UI/Timecounter" method="_on_timer_timeout"]
+[connection signal="timeout" from="Pickup_Obstacle_Spawn/Enemyspawn" to="Pickup_Obstacle_Spawn" method="_on_timer_timeout"]
+[connection signal="timeout" from="Pickup_Obstacle_Spawn/Difficulty Timer" to="Pickup_Obstacle_Spawn" method="_on_difficulty_timer_timeout"]
+[connection signal="timeout" from="Glitchboxspawner/glitchspawn" to="Glitchboxspawner" method="_on_glitchspawn_timeout"]

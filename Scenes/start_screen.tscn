@@ -1,0 +1,194 @@
+[gd_scene format=3 uid="uid://b4rv7cr3jk63g"]
+
+[ext_resource type="Script" uid="uid://dwcmdfwr4m1jk" path="res://Scenes/cornercollide.gd" id="2_5a7ho"]
+[ext_resource type="PackedScene" uid="uid://d0o6mnup08u1j" path="res://Scenes/fake_ball.tscn" id="2_ssogg"]
+[ext_resource type="Texture2D" uid="uid://b4w60paokg0wf" path="res://Assets/Sprites/Boundrybox.png" id="3_ssogg"]
+[ext_resource type="Script" uid="uid://qvvfevbxuo2a" path="res://Scenes/startscreen.gd" id="4_ssogg"]
+[ext_resource type="FontFile" uid="uid://ce15mt7w4wmwx" path="res://Assets/Fonts/PxPlus_IBM_VGA_8x14.ttf" id="5_akot6"]
+[ext_resource type="Script" uid="uid://blhgi68ec2m8d" path="res://Scenes/camera.gd" id="5_rjuq2"]
+[ext_resource type="Shader" uid="uid://b3an25lkoahyo" path="res://Scenes/VHSCRT.gdshader" id="6_c1457"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i4j32"]
+size = Vector2(7, 7)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_luy4t"]
+b = Vector2(-1151.7731, -0.10626221)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_wl442"]
+b = Vector2(0.1171875, -647.97656)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_i4j32"]
+b = Vector2(1152, 0)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_ebmjs"]
+b = Vector2(0, 648)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wl442"]
+shader = ExtResource("6_c1457")
+shader_parameter/brightness = 0.6650000315875
+shader_parameter/contrast = 1.08
+shader_parameter/saturation = 1.1
+shader_parameter/gamma = 1.05
+shader_parameter/curvature = 0.0190000009025
+shader_parameter/corner_soften = 0.06
+shader_parameter/vignette = 0.38
+shader_parameter/scanline_strength = 0.410000019475
+shader_parameter/scanline_density = 0.87600001786
+shader_parameter/interlace_strength = 0.2
+shader_parameter/mask_strength = 0.22
+shader_parameter/mask_scale = 1.0
+shader_parameter/chroma_offset_px = 1.6
+shader_parameter/luma_smear_px = 2.2
+shader_parameter/jitter_px = 0.9230000438425
+shader_parameter/wobble_px = 1.5
+shader_parameter/tape_noise = 0.22
+shader_parameter/tape_lines = 0.35
+shader_parameter/roll_speed = 0.1
+shader_parameter/roll_strength = 0.15
+shader_parameter/glow_strength = 0.25
+shader_parameter/glow_threshold = 0.65
+
+[node name="StartScreen" type="Node2D" unique_id=2056118049]
+
+[node name="Collisons" type="Node2D" parent="." unique_id=1724156867]
+
+[node name="World Barrier" type="StaticBody2D" parent="Collisons" unique_id=1006111474]
+position = Vector2(32, 16)
+scale = Vector2(0.94165087, 0.94165087)
+
+[node name="Corner Detection" type="Node2D" parent="Collisons/World Barrier" unique_id=1320931689]
+position = Vector2(16.991436, 16.991436)
+scale = Vector2(0.96827245, 0.96827245)
+
+[node name="Area2D" type="Area2D" parent="Collisons/World Barrier/Corner Detection" unique_id=1864435995]
+position = Vector2(-15.354672, -1.0967623)
+scale = Vector2(3.3639827, 3.3639827)
+script = ExtResource("2_5a7ho")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collisons/World Barrier/Corner Detection/Area2D" unique_id=1052057917]
+position = Vector2(3.5, 3.5)
+shape = SubResource("RectangleShape2D_i4j32")
+
+[node name="Area2D2" type="Area2D" parent="Collisons/World Barrier/Corner Detection" unique_id=743455750]
+position = Vector2(-12.064387, 625.15454)
+scale = Vector2(3.2154453, 3.2154453)
+script = ExtResource("2_5a7ho")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collisons/World Barrier/Corner Detection/Area2D2" unique_id=2039778787]
+position = Vector2(3.5, 3.5)
+shape = SubResource("RectangleShape2D_i4j32")
+
+[node name="Area2D3" type="Area2D" parent="Collisons/World Barrier/Corner Detection" unique_id=2065444118]
+position = Vector2(1143.9231, 619.6707)
+scale = Vector2(3.6450562, 3.6450562)
+script = ExtResource("2_5a7ho")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collisons/World Barrier/Corner Detection/Area2D3" unique_id=1973504370]
+position = Vector2(3.5, 3.5)
+shape = SubResource("RectangleShape2D_i4j32")
+
+[node name="Area2D4" type="Area2D" parent="Collisons/World Barrier/Corner Detection" unique_id=1848235791]
+position = Vector2(1144, 0)
+scale = Vector2(3.9308434, 3.9308434)
+script = ExtResource("2_5a7ho")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collisons/World Barrier/Corner Detection/Area2D4" unique_id=606942358]
+position = Vector2(3.5, 3.5)
+shape = SubResource("RectangleShape2D_i4j32")
+
+[node name="Sprite2D" type="Sprite2D" parent="Collisons/World Barrier" unique_id=217152701]
+position = Vector2(577.70886, 331.33298)
+scale = Vector2(0.62550426, 0.62550426)
+texture = ExtResource("3_ssogg")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Collisons/World Barrier" unique_id=131611668]
+position = Vector2(1151.7731, 16.991434)
+scale = Vector2(2.720995, 2.720995)
+shape = SubResource("SegmentShape2D_luy4t")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Collisons/World Barrier" unique_id=351942431]
+position = Vector2(1151.8828, 647.97656)
+scale = Vector2(2.720995, 2.720995)
+shape = SubResource("SegmentShape2D_wl442")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Collisons/World Barrier" unique_id=741353052]
+position = Vector2(-1, 648)
+scale = Vector2(2.720995, 2.720995)
+shape = SubResource("SegmentShape2D_i4j32")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collisons/World Barrier" unique_id=539503412]
+scale = Vector2(2.720995, 2.720995)
+shape = SubResource("SegmentShape2D_ebmjs")
+
+[node name="UI" type="Control" parent="." unique_id=1976044374]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("4_ssogg")
+metadata/_edit_use_anchors_ = true
+
+[node name="Background" type="CanvasLayer" parent="UI" unique_id=701154253]
+layer = -1
+
+[node name="ColorRect" type="ColorRect" parent="UI/Background" unique_id=1768669323]
+offset_right = 1151.0
+offset_bottom = 645.0
+color = Color(0, 0, 0, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="UI" unique_id=1738944684]
+layout_mode = 0
+offset_left = 279.99997
+offset_top = 127.999985
+offset_right = 375.99997
+offset_bottom = 150.99998
+scale = Vector2(6.1018724, 6.1018724)
+theme_override_fonts/font = ExtResource("5_akot6")
+text = "SCREEN SAVER"
+
+[node name="Button" type="Button" parent="UI" unique_id=1509971292]
+layout_mode = 0
+offset_left = 480.0
+offset_top = 408.0
+offset_right = 528.0
+offset_bottom = 430.0
+scale = Vector2(3.9710963, 3.9710963)
+theme_override_fonts/font = ExtResource("5_akot6")
+text = "START"
+
+[node name="Button2" type="Button" parent="UI" unique_id=1029119064]
+layout_mode = 0
+offset_left = 480.00003
+offset_top = 480.00003
+offset_right = 528.0
+offset_bottom = 502.00003
+scale = Vector2(3.9710963, 3.9710963)
+theme_override_fonts/font = ExtResource("5_akot6")
+text = "QUIT"
+
+[node name="Fake ball" parent="." unique_id=617737476 instance=ExtResource("2_ssogg")]
+position = Vector2(576, 329)
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=505415941]
+position = Vector2(577, 324)
+script = ExtResource("5_rjuq2")
+
+[node name="Shaders" type="CanvasLayer" parent="." unique_id=1746052604]
+
+[node name="ColorRect" type="ColorRect" parent="Shaders" unique_id=939322897]
+material = SubResource("ShaderMaterial_wl442")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+metadata/_edit_use_anchors_ = true
+
+[connection signal="body_entered" from="Collisons/World Barrier/Corner Detection/Area2D" to="Collisons/World Barrier/Corner Detection/Area2D" method="_on_body_entered"]
+[connection signal="body_entered" from="Collisons/World Barrier/Corner Detection/Area2D2" to="Collisons/World Barrier/Corner Detection/Area2D2" method="_on_body_entered"]
+[connection signal="body_entered" from="Collisons/World Barrier/Corner Detection/Area2D3" to="Collisons/World Barrier/Corner Detection/Area2D3" method="_on_body_entered"]
+[connection signal="body_entered" from="Collisons/World Barrier/Corner Detection/Area2D4" to="Collisons/World Barrier/Corner Detection/Area2D4" method="_on_body_entered"]
+[connection signal="pressed" from="UI/Button" to="UI" method="_on_button_pressed"]
+[connection signal="pressed" from="UI/Button2" to="UI" method="_on_button_2_pressed"]

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dst8er3xxlunl"
+path="res://.godot/imported/Retro perfecthit.wav-2909cfe9af35a2b27710db0733be4bb5.sample"
+
+[deps]
+
+source_file="res://Assets/Music/Retro perfecthit.wav"
+dest_files=["res://.godot/imported/Retro perfecthit.wav-2909cfe9af35a2b27710db0733be4bb5.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://d0o6mnup08u1j"]
+
+[ext_resource type="Script" uid="uid://dnlxf4nw8ub3d" path="res://fake_ball.gd" id="1_4stis"]
+[ext_resource type="Texture2D" uid="uid://dxaf2o7fvmvhi" path="res://Assets/Sprites/DVD.png" id="2_2oasv"]
+[ext_resource type="Script" uid="uid://bkofycn33gve5" path="res://Scenes/logo.gd" id="3_41mpt"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ij5cq"]
+friction = 0.0
+bounce = 1.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qxrlw"]
+size = Vector2(20, 13.463449)
+
+[node name="Fake ball" type="RigidBody2D" unique_id=617737476]
+physics_material_override = SubResource("PhysicsMaterial_ij5cq")
+gravity_scale = 0.0
+lock_rotation = true
+contact_monitor = true
+max_contacts_reported = 1
+linear_damp_mode = 1
+angular_damp_mode = 1
+script = ExtResource("1_4stis")
+
+[node name="Line2D" type="Line2D" parent="." unique_id=1204645827]
+
+[node name="Polygon2D" type="Polygon2D" parent="." unique_id=1210061452]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=575938377]
+scale = Vector2(0.30090263, 0.30090263)
+texture = ExtResource("2_2oasv")
+script = ExtResource("3_41mpt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1433305921]
+position = Vector2(0, 7.499999)
+scale = Vector2(6.5365696, 6.5365696)
+shape = SubResource("RectangleShape2D_qxrlw")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_entered" from="." to="Sprite2D" method="_on_ball_body_entered"]
